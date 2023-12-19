@@ -1,0 +1,47 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix o: <http://omeka.org/s/vocabs/o#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sp: <https://sport-score/onto/sp#> .
+@prefix ma: <http://www.w3.org/ns/ma-ont#>.
+
+<https://sport-score/onto/sp#> a owl:Ontology ;
+    dcterms:title "Sport Score" .
+
+sp:Sportif a rdfs:Class ;
+    rdfs:label "Sportif" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+sp:Sport a rdfs:Class ;
+    rdfs:label "Sport" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+
+sp:sportName a rdf:Property ;
+    rdfs:label "sportName" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+sp:sportifName a rdf:Property ;
+    rdfs:label "sportifName" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+sp:hasSport a rdf:Property ;
+    rdfs:label "a comme sport" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+sp:hasScore a rdf:Property ;
+    rdfs:label "a comme score" ;
+    rdfs:domain o:Resource ;
+    vs:term_status "experimental" .
+
+
+
+    
