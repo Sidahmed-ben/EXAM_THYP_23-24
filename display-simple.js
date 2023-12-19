@@ -1,3 +1,6 @@
+let Sportif = [];
+let sportData = [];
+
 async function getData() {
   try {
     const response = await fetch("http://localhost:8080/omeka-s/api/items");
@@ -29,9 +32,12 @@ async function main() {
 function showItems(items) {
   console.log(items);
 
-  const sportData = getItemsFiltered(items, "sp:Sport");
+  sportData = getItemsFiltered(items, "sp:Sport");
   const Sport = d3
     .select(".sport")
+    .append("h2")
+    .style("color", "red")
+    .text("Liste des Sports :")
     .selectAll("li")
     .data(sportData)
     .enter()
@@ -51,9 +57,12 @@ function showItems(items) {
   });
 
   const sportifData = getItemsFiltered(items, "sp:Sportif");
-  const Sportif = d3
+  Sportif = d3
     .select(".sportif")
-    .style("margin-top", "40px")
+    .style("margin-top", "10px")
+    .append("h2")
+    .style("color", "red")
+    .text("Liste des Sportifs :")
     .selectAll("li")
     .data(sportifData)
     .enter()
@@ -78,6 +87,17 @@ function showItems(items) {
   Sportif.append("h2").text(function (d) {
     return "Score : " + d["sp:hasScore"][0]["@value"];
   });
+
+  d3.select("#footballFilter").on("click", function () {
+    filterSportItems("Football");
+  });
+
+  d3.select("#natationFilter").on("click", function () {
+    filterSportItems("Natation");
+  });
+  d3.select("#none").on("click", function () {
+    filterSportItems("");
+  });
 }
 
 function getItemsFiltered(items, type) {
@@ -95,4 +115,20 @@ function getSportById(data, id) {
     }
   }
   return null;
+}
+
+function filterSportItems(sportType) {
+  if (sportType) {
+    Sportif.style("display", function (d) {
+      const currentSport = getSportById(
+        sportData,
+        d["sp:hasSport"][0]["value_resource_id"]
+      );
+      return currentSport === sportType ? "block" : "none";
+    });
+  } else {
+    Sportif.style("display", function (d) {
+      return "block";
+    });
+  }
 }

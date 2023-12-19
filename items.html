@@ -43,6 +43,23 @@
 
     <div class="container mt-5">
       <div class="sport"></div>
+      <div style="margin-top: 40px" class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="sportDropdown"
+          data-bs-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Filtrer par sport
+        </button>
+        <div class="dropdown-menu" aria-labelledby="sportDropdown">
+          <a class="dropdown-item" href="#" id="footballFilter">Football</a>
+          <a class="dropdown-item" href="#" id="natationFilter">Natation</a>
+          <a class="dropdown-item" href="#" id="none">None</a>
+        </div>
+      </div>
       <div class="sportif"></div>
       <div class="text-center">
         <div class="spinner-grow text-dark" role="status">
